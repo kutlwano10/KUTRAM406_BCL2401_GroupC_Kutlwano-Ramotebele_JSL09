@@ -45,12 +45,12 @@ fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
 // }
 // setInterval(updateTime, 1000);
 
-// function getCurrentTime() {
-//     const date = new Date()
-//     document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"})
-// }
+function getCurrentTime() {
+    const date = new Date()
+    document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"})
+}
 
-// setInterval(getCurrentTime, 1000)
+setInterval(getCurrentTime, 1000)
 
 //Weather Display
 navigator.geolocation.getCurrentPosition(position => {
@@ -66,8 +66,8 @@ navigator.geolocation.getCurrentPosition(position => {
         const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
         document.getElementById('weather').innerHTML = `
         <img src=${iconUrl} />
-        <p>${Math.round(data.main.temp)}º</p>
-        <p>${data.name}</p>`
+        <p class="weather-temp">${Math.round(data.main.temp)}º</p>
+        <p class="weather-city">${data.name}</p>`
     })
     .catch(error => console.log(error));
 })
